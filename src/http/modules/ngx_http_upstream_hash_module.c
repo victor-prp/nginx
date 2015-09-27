@@ -292,7 +292,7 @@ ngx_http_upstream_init_chash(ngx_conf_t *cf, ngx_http_upstream_srv_conf_t *us)
     us->peer.init = ngx_http_upstream_init_chash_peer;
 
     peers = us->peer.data;
-    npoints = peers->total_weight * 160;
+    npoints = peers->total_weight * 1000;
 
     size = sizeof(ngx_http_upstream_chash_points_t)
            + sizeof(ngx_http_upstream_chash_point_t) * (npoints - 1);
@@ -352,7 +352,7 @@ ngx_http_upstream_init_chash(ngx_conf_t *cf, ngx_http_upstream_srv_conf_t *us)
         ngx_crc32_update(&base_hash, port, port_len);
 
         prev_hash = 0;
-        npoints = peer->weight * 160;
+        npoints = peer->weight * 1000;
 
         for (j = 0; j < npoints; j++) {
             hash = base_hash;
